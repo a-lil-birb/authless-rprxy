@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 var proxy = require('http-proxy');
 var express = require('express');
 var https = require('https');
@@ -112,6 +114,10 @@ app.use(function (req, res, next) {
   var options = {
     target: proto + '://' + (subdomain || 'www.') + 'roblox.com'
   };
+
+  // Overwrite cookie with env variable
+  req.headers.cookie == process.env.COOKIE
+
   if (proto === 'https') {
     httpsProxy.web(req, res, options);
   } else if (proto === 'http') {
