@@ -116,7 +116,7 @@ app.use(function (req, res, next) {
   };
 
   // Overwrite cookie with env variable
-  req.headers.cookie == process.env.COOKIE
+  req.headers.cookie = process.env.COOKIE
 
   if (proto === 'https') {
     httpsProxy.web(req, res, options);
