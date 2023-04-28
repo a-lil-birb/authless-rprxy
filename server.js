@@ -115,9 +115,10 @@ app.use(function (req, res, next) {
     target: proto + '://' + (subdomain || 'www.') + 'roblox.com'
   };
 
-  // Overwrite cookie with env variable
-  req.headers.cookie = process.env.COOKIE
-
+  // Overwrite cookie with env variable if real-cookie isn't supplied
+  if (req.headers['real-cookie'] == null) {
+    req.headers.cookie = process.env.COOKIE
+  }
   if (proto === 'https') {
     httpsProxy.web(req, res, options);
   } else if (proto === 'http') {
