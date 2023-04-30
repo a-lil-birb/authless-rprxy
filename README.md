@@ -1,3 +1,16 @@
+# authless rprxy
+
+This is a fork of rprxy at [https://github.com/sentanos/rprxy]() that allows users to access more API results without the need for authentification.
+
+Include the environment variable `COOKIE` for instances of this proxy to ignore and overwrite passed cookies with it.
+
+## Why?
+A lot of Roblox APIs return additional information unrelated to the authenticated user that may be useful (e.g. a game's playability status, a list of an asset's resellers, etc). The nature of a proxy also makes it a security risk for the users of it to pass any sensitive information such as their auth cookie, as the owner may be able to access this information.
+
+Alternatively, to retain the original behavior, append the custom header `real-cookie` set to non-null and your cookie will not be overwritten by the proxy.
+
+The rest of the original README is left untouched.
+
 # rprxy
 
 Because Roblox does not allow HttpService requests to roblox.com an external proxy is needed for access to site APIs.
