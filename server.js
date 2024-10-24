@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 var proxy = require('http-proxy');
+var cors = require('cors');
 var express = require('express');
 var https = require('https');
 var url = require('url');
@@ -77,6 +78,7 @@ httpProxy.on('error', onProxyError);
 httpProxy.on('proxyReq', onProxyReq);
 
 var app = express();
+app.use(cors())
 
 app.use('/proxy', express.static('./static'));
 app.use('/proxy', api);
